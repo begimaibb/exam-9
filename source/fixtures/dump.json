@@ -10,6 +10,9 @@
         "is_private": false,
         "album": [
             1
+        ],
+        "photo_favorites": [
+            1
         ]
     }
 },
@@ -22,7 +25,10 @@
         "caption": "Diane is a nice, intelligent, nerdy third-wave feminist woman who is shy at social gatherings.",
         "author": 1,
         "is_private": false,
-        "album": []
+        "album": [],
+        "photo_favorites": [
+            1
+        ]
     }
 },
 {
@@ -34,7 +40,10 @@
         "caption": "Princess Carolyn is the earnest, clever, hard-working agent. She is quite skilled at what she does.",
         "author": 1,
         "is_private": false,
-        "album": []
+        "album": [],
+        "photo_favorites": [
+            1
+        ]
     }
 },
 {
@@ -46,7 +55,13 @@
         "caption": "Hollyhock is a good-hearted, caring, and intelligent girl who finished her high school education.",
         "author": 1,
         "is_private": false,
-        "album": []
+        "album": [
+            1
+        ],
+        "photo_favorites": [
+            1,
+            4
+        ]
     }
 },
 {
@@ -57,7 +72,8 @@
         "name": "Bojack Horseman main characters",
         "description": "The highlights of the main characters of Bojack Horseman Show",
         "author": 1,
-        "is_private": false
+        "is_private": false,
+        "album_favorites": []
     }
 }
 ]

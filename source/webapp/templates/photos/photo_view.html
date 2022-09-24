@@ -9,9 +9,10 @@
                 <a class="nav-link" href="{% url "webapp:update_photo" photo.pk %}">Update photo</a>
             </li>
         {% endif %}
+        {% if perms.webapp.delete_photo or user == photo.author %}
         <li class="nav-item">
             <a class="nav-link" href="{% url "webapp:delete_photo" photo.pk %}">Delete</a>
-        </li>
+        </li>{% endif %}
 
     {% endif %}
 {% endblock %}
@@ -19,18 +20,19 @@
 {% block content %}
     <div class="card mt-3">
         <div class="card-body text-center">
-{#        <span id="photo-{{ photo.id }}" >Favorite: {{ photo.likes.count }}</span>#}
             <img src="{{ photo.photo.url }}" class="card-img-top w-25" alt="...">
             <p class="card-text">{{ photo.caption }}</p>
             <a href="{% url "accounts:profile" photo.author.pk %}" >{{ photo.author }}</a>
             <p class="card-text">{{ photo.created_at }}</p>
-{#            <a href="{% url "webapp:album_view" photo.album.pk %}" >{{ photo.album }}</a>#}
+{#            <a href="{% url "webapp:album_view" album.pk %}" >{{ photo.album }}</a>#}
+            <span id="photo-{{ photo.id }}" >Favorites: {{ photo.photo_favorites.count }}</span>
             {% if request.user.is_authenticated %}
                 <a data-photo-id="photo-{{ photo.id }}" class="card-link btn btn-warning"
                    href="{% url "api_v1:favorites" photo.pk %}">
                     {% if request.user in photo.photo_favorites.all %} Delete from favorites {% else %} Favorites {% endif %}
                 </a>
             {% endif %}
+
         </div>
     </div>
 

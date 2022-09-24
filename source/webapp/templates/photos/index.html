@@ -4,8 +4,9 @@
 
     {% if perms.webapp.add_photo %}
         <li class="nav-item">
-            <a class="nav-link" href="{% url "webapp:create_photo" %}">Add photo</a>
+            <a class="nav-link" href="{% url "webapp:create_photo" %}">Add a photo</a>
         </li>
+        <a class="nav-link" href="{% url "webapp:create_album" %}">Add an album</a>
     {% endif %}
 {% endblock %}
 {% block content %}
