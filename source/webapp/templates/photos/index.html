@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block nav %}
+
+    {% if perms.webapp.add_photo %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url "webapp:create_photo" %}">Add photo</a>
+        </li>
+    {% endif %}
+{% endblock %}
+{% block content %}
+    <div id="content">
+        {% include "partial/photo_list_partial.html" %}
+    </div>
+
+{% endblock %}
+

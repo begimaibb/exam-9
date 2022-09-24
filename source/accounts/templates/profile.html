@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+{% block nav %}
+{% endblock %}
+{% block content %}
+    <div class="card flex-row mt-3">
+        {% if user_obj.profile.avatar %}
+            <img src="{{ user_obj.profile.avatar.url }}" class="card-img-top w-25" alt="...">
+        {% endif %}
+        <div class="card-body ms-5">
+            <h5 class="card-title">Username: {{ user_obj.username }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Birthday: {{ user_obj.profile.birthday }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Name: {{ user_obj.first_name }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Last Name: {{ user_obj.last_name }}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Email: {{ user_obj.email }}</h6>
+        </div>
+    </div>
+    {% include "partial/photo_list_partial.html" %}
+{% endblock %}
