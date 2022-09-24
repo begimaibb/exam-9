@@ -1,0 +1,28 @@
+<h1 class="text-center">Gallery</h1>
+<div class="row">
+    {% for photo in photos %}
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <img src="{{ photo.photo.url }}" class="card-img-top w-25" alt="...">
+                    <p class="card-text">{{ photo.caption }}</p>
+                    <a href="{% url "accounts:profile" photo.author.pk %}" >{{ photo.author }}</a>
+                    <p class="card-text">{{ photo.created_at }}</p>
+{#                    <a href="{% url "webapp:album" %}" >{{ photo.album }}</a>#}
+                    <span id="photo-{{ photo.id }}" >Favorites: {{ photo.photo_favorites.count }}</span>
+                </div>
+                    <a href="{{ photo.get_absolute_url }}" class="card-link btn btn-primary">More</a>
+                {% if request.user.is_authenticated %}
+                    <a data-photo-id="photo-{{ photo.id }}" class="card-link btn btn-warning"
+                       href="{% url "api_v1:favorites" photo.pk %}">
+                        {% if request.user in photo.photo_favorites.all %} Delete from favorites {% else %} Favorites {% endif %}
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+        {% empty %}
+    {% endfor %}
+    {% if is_paginated %}
+        <div class="text-center">{% include "partial/pagination.html" %}</div>
+    {% endif %}
+</div>

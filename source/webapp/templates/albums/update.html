@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Update Album{% endblock %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Update Album</h1>
+        <form action="" method="post">
+            {% include "partial/form.html" with button_text="Update album" %}
+        </form>
+        <a href="{% url "webapp:index" %}">Home</a>
+    </div>
+{% endblock %}
